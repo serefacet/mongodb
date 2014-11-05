@@ -15,7 +15,7 @@ import com.mongodb.ServerAddress;
 public class App 
 {
     public static void main( String[] args ) throws UnknownHostException {
-        MongoClient mongoClient = new MongoClient(new ServerAddress("localhost",27017));
+        MongoClient mongoClient  = new MongoClient(new ServerAddress("localhost",27017));
         
         DB database = mongoClient.getDB("course");
         DBCollection collection = database.getCollection("hello");
