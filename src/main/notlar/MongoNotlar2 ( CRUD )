@@ -79,7 +79,23 @@ key kısmını verirken type'a bakmaz.String olarak alir hep.Ama value type'da e
 
 > db.seref.find({b:2},{"a":true}); find'da virgulden sonraki kisim projection kismi.Hangi kolonlarin getirilecegini yazariz. bir tane true yaptiysak digerleri false olur sadece "_id" kolonu haric.
 
-projection kisminda sadece key alani yazilip true false olarak verilmesi gerek.s
+projection kisminda sadece key alani yazilip true false olarak verilmesi gerek.
+
+
+Filtering (Greater Than , Less Than)
+------------------------
+
+db.url_thisweek.find({country:"GB",avg_daily_views:{$lt:10}}); -> avg_daily_views 10'dan kucuk ve country GB olanlar
+db.url_thisweek.find({country:"GB",avg_daily_views:{$gt:10}}); -> avg_daily_views 10'dan buyuk ve country GB olanlar
+db.url_thisweek.find({country:"GB",avg_daily_views:{$lte:10}}); -> avg_daily_views 10'dan kucuk veya 10'a eşit olan ve country GB olanlar
+
+db.url_thisweek.find({country:"GB",avg_daily_views:{$gt:5,$lt:10}}); -> avg_daily_views 5'den buyuk ve 10'dan kucuk olan ve country GB olanlar
+
+Strong Typing in MongoDB
+---------------------------
+aynı collection içerisinde {name:"seref" }, {name:23} şeklinde iki tane döküman olursa ve find.name:{$gt:"A" ,$lt:"Z"} dersek 23'lü rakam geldi.ASCII charactere gore bakmaz.
+Strong type oldugu icin veri tipi string olanlari aratir sadece.Sayi olanlari direk eler. sayi olarak aratirsak string olanlari direk eler vice versa :)
+
 
 
 
